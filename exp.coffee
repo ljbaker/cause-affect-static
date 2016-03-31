@@ -41,6 +41,7 @@ intro_template = ->
   p -> "Please pay close attention and answer to the best of your abilities."
 
 intro =
+  name: "introduction"
   template: intro_template
 
 instructions = 
@@ -106,6 +107,7 @@ training_close = ->
   window.exp.training_input = input
 
 training = 
+  name: "training"
   template: training_template
   function: training_function
   close: training_close
@@ -165,8 +167,16 @@ survey =
   template: survey_template
   close: survey_close
 
+preview_template = ->
+  div ".panel.panel-default", ->
+    div ".panel-heading", ->
+      h3 ".panel-title", -> "Preview"
+    div ".panel-body", ->
+      p "Hello, this is a quick experiment that measures how people make evaluations in different contexts. The experiment is expected to last about 4 minutes and the reward has been calculated to provide the equivalent of $10/hour."
+
 preview =
   name: "preview"
+  template: preview_template
 
 # attach exp to window, it'll be what we use to keep track of experiment data.
 @exp = {}
@@ -182,9 +192,6 @@ _.extend(@exp,turk)
 # u = Qurl.create(); u.query("personal", '["you have","there is","someone has"]'); u.query("valence", '["sadness", "happiness", "doubt"]')
 
 querystring = Qurl.create().query()
-@q = querystring
-console.log(querystring)
-
 _.defaults(querystring,{
   personal: '["you have","there is","someone has"]',
   valence: '["unhappiness", "skill in stenography", "happiness", "pagally", "sadness", "positivity", "contentment", "pessimism", "gloominess", "centeredness", "doubt"]',
@@ -194,8 +201,6 @@ _.defaults(querystring,{
 for key, value of querystring
   new_value = JSON.parse(value)
   querystring[key] = new_value
-  console.log(new_value)
-console.log(querystring)
 
 @exp.valence_conditions = querystring.valence
 @exp.valence = _.sample(@exp.valence_conditions)
