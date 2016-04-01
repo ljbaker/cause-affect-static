@@ -210,7 +210,8 @@ _.defaults(querystring,{
   chemical: '[[10, 10], [40, 10], [40, 40], [60, 10], [60, 40], [60, 60], [90, 10], [90, 40], [90, 60], [90, 90]]'
   })
 
-for key, value of querystring
+for key in ["personal", "valence", "chemical"]
+  value = querystring[key]
   new_value = JSON.parse(value)
   querystring[key] = new_value
 
