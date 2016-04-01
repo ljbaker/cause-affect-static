@@ -4,8 +4,14 @@ show_slide = (slide_obj, proceed=true, clear=true) ->
     template: ->
       h1 "hello default template"
       p "replace me"
+    name: "no name"
     function: ->
-      console.log("we have executed a default slide function for slide #{slide_obj.name | 'unnamed slide'}")
+      console.log("we have executed a default slide function for slide #{this.name}")
+    })
+
+  @exp.slide_history.push({
+    "name": slide_obj["name"]
+    "time": new Date().getTime()
     })
 
   if clear
@@ -159,6 +165,11 @@ survey_close = ->
       })
   window.exp.survey_input = input
 
+  window.exp.slide_history.push({
+    "name": "exit"
+    "time": new Date().getTime()
+    })
+
   window.turk.submit(window.exp)
 
 
@@ -186,6 +197,7 @@ preview =
   training,
   survey,
 ]
+@exp.slide_history = []
 _.extend(@exp,turk)
 
 # in order to generate the desired query string do the following in a browser console where the Qurl package is loaded

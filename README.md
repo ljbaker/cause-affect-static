@@ -26,12 +26,28 @@ It is recommend to deploy this to a github project page (see https://pages.githu
 
 General testing can be done by simply navigating to http://localhost:8000/ or the external URL after deployment. The default for each condition is to randomly select a single option for each between subject condition. When running the experiment (eg on MTurk) one can restrict the available conditions using a [query string](https://en.wikipedia.org/wiki/Query_string).
 
-To do this, start by url encoding a list of the values. For instance, if you want the personal condition to select between the values "you have", "there is", "someone has" you will URL encode `'["you have", "there is", "someone has"]'` to get `%27%5B%22you+have%22%2C+%22there+is%22%2C+%22someone+has%22%5D%27`. You can use the free url encoder [here](http://www.freeformatter.com/url-encoder.html#ad-output). Once you have these encoded you can build the URL as follows.
+To do this, start by url encoding a list of the values. For instance, if you want the personal condition to select between the values "you have", "there is", "someone has" you will URL encode `'["you have", "there is", "someone has"]'` to get `%5B"you%20have"%2C%20"there%20is"%2C%20"someone%20has"%5D`. You can use Qurl to do this via the following lines executed in your browser console after loading the Qurl package
 
 ```
-https://username.github.io/repository?
-personal=%27%5B%22you+have%22%2C+%22there+is%22%2C+%22someone+has%22%5D%27
-&valence=%27%5B%22sadness%22%2C+%22happiness%22%2C+%22doubt%22%5D%27
+q = Qurl.create()
+q.query('personal','["you have", "there is", "someone has"]')
+q.query('valence','["sadness", "happiness", "doubt"]')
+```
+
+The result is your updated URL bar. Here's the general format
+
+```
+https://username.github.io/repository/?
+personal=%5B"you%20have"%2C%20"there%20is"%2C%20"someone%20has"%5D
+&valence=%5B"sadness"%2C%20"happiness"%2C%20"doubt"%5D
+```
+
+And instance, my specific url looks like
+
+```
+https://nickrsearcy.github.io/cause-affect-static/?
+personal=%5B"you%20have"%2C%20"there%20is"%2C%20"someone%20has"%5D
+&valence=%5B"sadness"%2C%20"happiness"%2C%20"doubt"%5D
 ```
 
 ## MTurk testing
