@@ -170,7 +170,7 @@ survey_close = ->
     "time": new Date().getTime()
     })
 
-  window.turk.submit(window.exp)
+  window.turk.submit(window.exp, unwrap=true)
 
 
 survey =
