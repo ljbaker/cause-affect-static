@@ -183,7 +183,7 @@ preview_template = ->
     div ".panel-heading", ->
       h3 ".panel-title", -> "Preview"
     div ".panel-body", ->
-      p "Hello, this is a quick experiment that measures how people make evaluations in different contexts. The experiment is expected to last about 4 minutes and the reward has been calculated to provide the equivalent of $10/hour."
+      p "Hello, this is a quick experiment that measures how people make evaluations in different contexts. The experiment is expected to last about 2.5 minutes and the reward has been calculated to provide the equivalent of $12/hour."
 
 preview =
   name: "preview"
