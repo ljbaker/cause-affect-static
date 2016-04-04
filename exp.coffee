@@ -31,6 +31,9 @@ show_slide = (slide_obj, proceed=true, clear=true) ->
 
 intro_template = ->
   # p "this is a test"
+  h1 -> "Introduction"
+  p -> "In a moment you will be asked to read a brief scenario. You will then be asked to make a few judgments based on this scenario."
+  p -> "Please pay close attention and answer to the best of your abilities."
   h1 -> "Informed consent"
   p -> "Please read over the following informed consent agreement."
   div ".panel.panel-default", ->
@@ -42,9 +45,7 @@ intro_template = ->
         async: false
         })
       markdownit().render(a.responseText)
-  h1 -> "Introduction"
-  p -> "In a moment you will be asked to read a brief scenario. You will then be asked to make a few judgments based on this scenario."
-  p -> "Please pay close attention and answer to the best of your abilities."
+  
 
 intro =
   name: "introduction"
