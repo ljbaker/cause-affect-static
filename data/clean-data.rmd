@@ -1,0 +1,33 @@
+---
+title: "clean-data"
+author: "nrs"
+date: "April 4, 2016"
+output: html_document
+---
+# Libraries
+
+```{r, message=FALSE}
+rm(list=ls())
+library(readr)
+# library(jsonlite)
+# library(magrittr)
+# library(plyr)
+library(dplyr)
+# library(lubridate)
+# library(tidyr)
+```
+
+
+```{r}
+original_path = "HITResultsFor3CIS7GGG65OZ8XWB43RAMRA21M8UED.csv"
+untidy_data = read_csv(original_path)
+```
+
+```{r}
+names(untidy_data)[names(untidy_data)=="Answer 1"] = "json_txt"
+untidy_data %>%
+  mutate(
+    json = Map(fromJSON, json_txt)
+  )
+```
+
