@@ -1,6 +1,4 @@
-scripts = ["jquery-2.2.1.min.js", "jquery-ui.min.js", "bootstrap.min.js", "mmturkey.js",
-          "underscore.min.js", "qurl.js", "coffee-script.js",
-          "markdown-it.js", "coffeecup.js"]
+scripts = ["jquery-2.2.1.min.js", "jquery-ui.min.js", "bootstrap.min.js", "mmturkey.js", "underscore.min.js", "qurl.js", "coffee-script.js", "markdown-it.js", "coffeecup.js"]
 styles = ["bootstrap.min.css", "bootstrap-theme.min.css", "jquery-ui.structure.min.css", "jquery-ui.theme.min.css"]
 
 doctype 5

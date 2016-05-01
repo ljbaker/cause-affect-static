@@ -1,24 +1,38 @@
+# Overview
+
+This is a system for running an amazon mechanical turk experiment as simply as I know how. 
+
+Nearly everything is written in [coffeescript](http://coffeescript.org/). If you're unfamiliar, coffeescript is "a little language that compiles into JavaScript". It's generally simpler, has a lot of handy tricks built in, and is compatible with any JS library. The entire language is described in that link above. The templating engine used is [coffeecup](https://github.com/gradus/coffeecup) which is just a very straightforward implementation of templating functions into coffeescript.
+
+Browsers, of course, render HTML pages and run JS. So the first part of this puzzle is creating an html page that loads coffeescript and all the libraries we'll use. Once the browser has done that, we can run any coffeescript code directly, just like JS.
+
+The code for the experiment is in exp.coffee. The experiment is organized into 'slides'. Each slide includes three functions: a coffeecup template for creating HTML, a function to run when the slide is created (e.g. to operate on any elements created by the template), and a function to run when the slide is closed. This is all taken care of by the `show_slide()` and `proceed()` functions.
+
 # Development
 
-first, cd into the folder with the html version of the experiment
-
-compile index.coffee to formatted html, watch it and update when it changes
+The following command compiles index.coffee into, watches it and updates when it changes
 
 `coffeecup -f -w index.coffee`
 
-start python server
+You probably won't have to change it much, though.
+
+Also, for testing changes on your local machine, you can use a python server
 
 `python3 -m http.server`
 
-navigate to http://localhost:8000/
-
-# Organization
-
-CSS and JS that is free to use can be stored in the packages/ directory. All the code is in exp.coffee which is compiled and run in the browser. [Coffeecup](https://github.com/gradus/coffeecup) is used for templating.
+and then navigate to http://localhost:8000/ .
 
 # Deployment
 
-It is recommend to deploy this to a github project page (see https://pages.github.com/) like https://username.github.io/repository. This provides HTTPS for free. 
+It is recommend to deploy this to a github project page (see https://pages.github.com/) like https://username.github.io/repository. This provides HTTPS for free.
+
+The process involves creating a repository, creating a gh-pages branch on that repository and then committing your directory to the gh-pages branch. Once that's done the index.html file can be reached online at https://username.github.io/repository . The following code should work but I have not tested it.
+
+```
+git branch gh-pages
+git checkout gh-pages
+git commit -a -m 'add website branch'
+```
 
 # Testing
 

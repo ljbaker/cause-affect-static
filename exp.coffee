@@ -94,7 +94,6 @@ training_template = ->
 
 training_function = ->
   for c,i in window.exp.chemical
-    # console.log("we can at least say slider-#{i}")
     $("#slider-#{i}").slider({
       value: 5,
       min: 0,
