@@ -76,7 +76,17 @@ Below are the instructions for posting a HIT to MTurk. The instructions are the 
 
 When you are ready to do this, you'll need your amazon credentials configured. Here's [boto's guide](http://boto.cloudhackers.com/en/latest/boto_config_tut.html) for that. Whatever you do, **Do not hardcode the account key and secret key into your code**. If you do this in any version-controlled code, then anyone with access to the code has the keys to every dollar you put on AWS.
 
-The method I recommend for security is to add your key information to a file called `config.py` and then add `config.py` to your `.gitignore` file. 
+The method I recommend for security is to add your key information to an untracked file. The name for the file I use is `config.py`. To make sure this file is not tracked add this to your `/.gitignore` file in your repository (or create one if it doesn't yet exist)
+```
+**/config.py
+```
+
+Then create a file called `config.py` and fill it with your secret information, such as
+```
+AK = "notarealak"
+SK = "notarealsk"
+```
+
 
 ```
 from boto.mturk.connection import MTurkConnection
