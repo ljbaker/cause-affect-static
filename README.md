@@ -18,7 +18,7 @@ CSS and JS that is free to use can be stored in the packages/ directory. All the
 
 # Deployment
 
-It is recommend to deploy this to a github project page (see https://pages.github.com/) like https://username.github.io/repository. This provides HTTPS for free. 
+It is recommend to deploy this to a github project page (see https://pages.github.com/) like https://username.github.io/repository. This provides HTTPS for free.
 
 # Testing
 
@@ -74,16 +74,16 @@ This is what turkers will see when they are deciding whether or not to accept yo
 
 Below are the instructions for posting a HIT to MTurk. The instructions are the same if you are doing this to the main MTurk site or just the sandbox (a version of the MTurk site that functions exactly as the main one but for testing purposes and does not allow any actual money to change hands).
 
-When you are ready to do this, you'll need your amazon credentials configured. Here's [boto's guide](http://boto.cloudhackers.com/en/latest/boto_config_tut.html) for that. I very highly recommend using the credentials file method. Whatever you do, **Do not hardcode the account key and secret key into your code**. If you do this in any version-controlled code, then anyone with access to the code has the keys to every $ you put on AWS. 
+When you are ready to do this, you'll need your amazon credentials configured. Here's [boto's guide](http://boto.cloudhackers.com/en/latest/boto_config_tut.html) for that. Whatever you do, **Do not hardcode the account key and secret key into your code**. If you do this in any version-controlled code, then anyone with access to the code has the keys to every dollar you put on AWS.
+
+The method I recommend for security is to add your key information to a file called `config.py` and then add `config.py` to your `.gitignore` file. 
 
 ```
 from boto.mturk.connection import MTurkConnection
 from boto.mturk.question import ExternalQuestion
 from boto.mturk.qualification import LocaleRequirement, PercentAssignmentsApprovedRequirement, Qualifications, NumberHitsApprovedRequirement
+from config import AK,SK
 
-
-AK = "NOTAREALAK",
-SK = "notarealsk",
 HOST = "mechanicalturk.sandbox.amazonaws.com"
 NUM_ITERATIONS = 100
 EXPERIMENT_URL = """https://username.github.io/repository?
