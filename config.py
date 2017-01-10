@@ -1,0 +1,2 @@
+AK = "NOTAREALAK"
+SK = "notarealsk"

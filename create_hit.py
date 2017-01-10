@@ -1,10 +1,8 @@
 from boto.mturk.connection import MTurkConnection
 from boto.mturk.question import ExternalQuestion
 from boto.mturk.qualification import LocaleRequirement, PercentAssignmentsApprovedRequirement, Qualifications, NumberHitsApprovedRequirement
+from config import AK,SK
 
-
-AK = "NOTAREALAK",
-SK = "notarealsk",
 HOST = "mechanicalturk.sandbox.amazonaws.com"
 NUM_ITERATIONS = 100
 EXPERIMENT_URL = """https://username.github.io/repository?
