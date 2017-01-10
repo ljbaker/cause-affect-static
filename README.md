@@ -101,7 +101,7 @@ personal=%27%5B%22you+have%22%2C+%22there+is%22%2C+%22someone+has%22%5D%27
 &valence=%27%5B%22sadness%22%2C+%22happiness%22%2C+%22doubt%22%5D%27
 """
 
-mtc = MTurkConnection(host=HOST)
+mtc = MTurkConnection(aws_access_key_id=AK, aws_secret_access_key=SK, host=HOST)
 
 quals = Qualifications();
 quals.add( PercentAssignmentsApprovedRequirement('GreaterThanOrEqualTo',95) )
